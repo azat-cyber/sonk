@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+
+
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
@@ -12,7 +14,10 @@
     </form>
 
     {% if img_obj %}
-        <h3>Succesfully uploaded : {{ img_obj.title }}</h3>
+        <h3>Successfully uploaded : {{ img_obj.title }}</h3>
         <img src="{{ img_obj.image.url }}" alt="connect" style="max-height:300px">
     {% endif %}
+    {% for photo in photos %}
+        <img src="{{ photo.image.url }}" alt="test"><br>
+    {% endfor %}
 {% endblock %}

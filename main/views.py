@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Task
+from .models import Task, Image
 from .forms import TaskForm, ImageForm
 
 
@@ -46,5 +46,6 @@ def photo(request):
             img_obj = form.instance
             return render(request, 'main/Photos.html', {'form': form, 'img_obj': img_obj})
     else:
+        photos = Image.objects.order_by('-id')
         form = ImageForm()
-    return render(request, 'main/Photos.html', {'form': form})
+    return render(request, 'main/Photos.html', {'form': form, 'photos': photos})
