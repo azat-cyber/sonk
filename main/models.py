@@ -13,5 +13,14 @@ class Task(models.Model):
         verbose_name_plural = 'Задачи'
 
 
-# class Photo(models.Model):
-#     images = models.ImageField('Фотография', upload_to='upload')
+class Image(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='images')
+
+    def __str__(self):
+        return self.title
+
+
+
+
+
