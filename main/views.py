@@ -49,3 +49,9 @@ def photo(request):
         photos = Image.objects.order_by('-id')
         form = ImageForm()
     return render(request, 'main/Photos.html', {'form': form, 'photos': photos})
+
+
+def del_photo(request, id):
+    photo = Image.objects.get(id=id)
+    photo.delete()
+    return redirect('photo')
